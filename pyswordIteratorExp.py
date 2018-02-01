@@ -28,13 +28,16 @@ for item in bible.get_iter(clean=False):
     contents=contents+ww
     comp1=zip(strongs,morphs)
     for strong,morph in comp1:
-      contents=contents+u'<W'+strong[0]+u'>'
+      rs1=re.match(r'(H|G)0*(\d+)',strong[0])
+      contents=contents+u'<W'+rs1.group(1)+rs1.group(2)+u'>'
       if morph[0]=='robinson':
         contents=contents+u'<WT'+morph[1]+u'>'
       elif morph[0]=='strongMorph':
-        contents=contents+morph[1].replace(u'T',u'W')+u'>'
+        rs2=re.match(r'TH0*(\d+)',morph[1])
+        contents=contents+u'<'+u'WH'+rs2.group(1)+u'>'
     for i in range(len(comp1),len(strongs)):
-      contents=contents+u'<W'+strongs[i][0]+u'>'
+      rs3=re.match(r'(H|G)0*(\d+)',strongs[i][0])
+      contents=contents+u'<W'+rs3.group(1)+rs3.group(2)+u'>'
 
     contents=contents+comma
   contents=contents+u'\n'
