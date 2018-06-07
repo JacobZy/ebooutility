@@ -15,7 +15,7 @@ def verserepel(reobj):
     if len(sl)==4:
       if sl[1]=='Rth':
         sl[1]='Ruth'
-      ref=ref+sl[0]+'.'+sl[1]+'.'+sl[2]+'-'+ref+sl[0]+'.'+sl[1]+'.'+sl[3]
+      ref=ref+sl[0]+'.'+sl[1]+'.'+sl[2]+'-'+sl[0]+'.'+sl[1]+'.'+sl[3]
     ref=ref+' '
   return '<reference osisRef="'+ref.strip()+'">'+ref+'</reference>'
 
