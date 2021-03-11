@@ -1,0 +1,35 @@
+#1.添加字体
+cp msyh.ttc ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts
+
+#2.修改系统注册表
+wine regedit
+#修改以下两行
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]
+"MS Shell Dlg"="msyh"
+"MS Shell Dlg 2"="msyh"
+
+#3.字体注册
+gedit msyh_config.reg
+#内容添加
+REGEDIT4
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
+"Lucida Sans Unicode"="msyh.ttc"
+"Microsoft Sans Serif"="msyh.ttc"
+"MS Sans Serif"="msyh.ttc"
+"Tahoma"="msyh.ttc"
+"Tahoma Bold"="msyhbd.ttc"
+"msyh"="msyh.ttc"
+"Arial"="msyh.ttc"
+"Arial Black"="msyh.ttc"
+
+#4注册
+wine regedit msyh_config.reg
+
+#5 riched20.dll替换，下载原装windows系统安装系统中的riched20.dll，
+如果程序安装在program files x86中，将.wine/drive_c/windows/syswow64中同名文件替换掉，
+如果程序安装在program files中，则需要替换.wine/drive_c/windows/system32中的文件
+此步骤如果未执行，可能输入中文有问题。
+
+#5.winecfg配置
+选择程序执行文件，如dingtalk.exe，选择操作系统版本windows7
+函数库替换，分别添加3个函数库：msvcp60、riched20、riched32，原装优先于内建立
