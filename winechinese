@@ -33,3 +33,16 @@ wine regedit msyh_config.reg
 #5.winecfg配置
 选择程序执行文件，如dingtalk.exe，选择操作系统版本windows7
 函数库替换，分别添加3个函数库：msvcp60、riched20、riched32，原装优先于内建立
+
+#6.配置程序的运行快捷方式，文本编辑，执行环境增加LC_ALL=zh_CN.UTF-8，此修改对于英文操作系统下的wine运行展示中文是必须的，否则显示为方框
+[Desktop Entry]
+Name=DingTalk
+Exec=env LC_ALL=zh_CN.UTF-8 WINEPREFIX="/home/enlink/.wine" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/enlink/.wine/dosdevices/c:/users/Public/Desktop/DingTalk.lnk
+Type=Application
+StartupNotify=true
+Path=/home/enlink/.wine/dosdevices/c:/Program Files (x86)/DingDing
+Icon=740E_logo.0
+StartupWMClass=dingtalklauncher.exe
+
+#7.上条修改运行环境的修改可以在wine.sh的全局执行中配置LC_ALL=zh_CN.UTF-8，则所有以wine运行的程序都会加载和正常展示中文
+
