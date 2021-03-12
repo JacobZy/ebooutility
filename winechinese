@@ -46,3 +46,4 @@ StartupWMClass=dingtalklauncher.exe
 
 #7.上条修改运行环境的修改可以在wine.sh的全局执行中配置LC_ALL=zh_CN.UTF-8，则所有以wine运行的程序都会加载和正常展示中文
 
+#8.winecfg中的grafics中去掉Allow the window manager to decorate the windows 选项，则能够去掉显示部分程序的外围wine边框
